@@ -22,6 +22,7 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
+            padding-bottom: 80px; /* Espacio extra para el botón flotante en móvil */
         }
 
         .container {
@@ -42,14 +43,16 @@
             border-bottom: 1px dashed #334155;
             padding-bottom: 20px;
             margin-bottom: 25px;
+            flex-wrap: wrap; /* Permite que baje si no hay espacio */
         }
 
-        h1 { font-size: 2.2rem; color: #fff; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
-        .role { color: var(--accent-color); font-family: var(--font-mono); font-size: 1.1rem; font-weight: bold; }
-        
+        .header-left { max-width: 60%; }
         .contact-info { text-align: right; font-size: 0.9rem; color: var(--secondary-text); font-family: var(--font-mono); }
         .contact-info div { margin-bottom: 2px; }
 
+        h1 { font-size: 2.2rem; color: #fff; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; line-height: 1.1; }
+        .role { color: var(--accent-color); font-family: var(--font-mono); font-size: 1.1rem; font-weight: bold; }
+        
         /* Sections */
         h2 {
             font-size: 1.3rem;
@@ -68,7 +71,7 @@
         /* Skills Grid */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* Forzado a 2 columnas para mejor orden */
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
             margin-top: 15px;
         }
@@ -86,6 +89,8 @@
             margin-bottom: 20px;
             border: 1px solid #27272a;
             box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+            overflow-x: auto; /* Scroll horizontal en móvil */
+            white-space: pre-wrap; /* Mantiene el formato pero permite wrap si es necesario */
         }
         .prompt { color: var(--accent-color); font-weight: bold; }
         .cmd { color: #fff; }
@@ -93,15 +98,18 @@
 
         /* Experience */
         .job { margin-bottom: 25px; }
+        
         .job-header {
             display: flex;
             justify-content: space-between;
             margin-bottom: 8px;
             align-items: baseline;
+            flex-wrap: wrap;
         }
-        .job-title { font-weight: 700; font-size: 1.1rem; color: #fff; }
+        
+        .job-title { font-weight: 700; font-size: 1.1rem; color: #fff; margin-right: 10px; }
         .company { color: var(--accent-color); font-family: var(--font-mono); font-size: 0.9rem; }
-        .date { font-family: var(--font-mono); color: var(--secondary-text); font-size: 0.85rem; }
+        .date { font-family: var(--font-mono); color: var(--secondary-text); font-size: 0.85rem; white-space: nowrap; }
 
         .sub-project {
             margin-left: 10px;
@@ -124,35 +132,78 @@
         /* Button */
         .btn-download {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 20px;
+            right: 20px;
             background-color: var(--accent-color);
             color: #000;
             padding: 12px 25px;
             border: none;
-            border-radius: 4px;
+            border-radius: 50px; /* Más redondeado para móvil */
             font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 0 20px rgba(0, 255, 157, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 255, 157, 0.4);
             transition: all 0.3s;
             font-family: var(--font-mono);
             text-transform: uppercase;
             letter-spacing: 1px;
             z-index: 1000;
+            font-size: 0.9rem;
         }
-        .btn-download:hover { background-color: #fff; box-shadow: 0 0 30px rgba(255, 255, 255, 0.4); }
+        .btn-download:hover { background-color: #fff; transform: translateY(-2px); }
+
+        /* --- RESPONSIVE MEDIA QUERIES (MÓVIL) --- */
+        @media screen and (max-width: 768px) {
+            .container {
+                width: 95%;
+                margin: 15px auto;
+                padding: 20px;
+            }
+
+            header {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .header-left { max-width: 100%; }
+
+            .contact-info {
+                text-align: center;
+                width: 100%;
+                border-top: 1px solid #334155;
+                padding-top: 15px;
+            }
+
+            h1 { font-size: 1.8rem; }
+            .role { font-size: 1rem; }
+
+            .skills-grid {
+                grid-template-columns: 1fr; /* Una sola columna en móvil */
+            }
+
+            .job-header {
+                flex-direction: column;
+                gap: 2px;
+            }
+            
+            .date { margin-bottom: 5px; font-size: 0.8rem; color: var(--accent-color); opacity: 0.8; }
+            
+            ul { margin-left: 15px; }
+        }
 
         /* --- OPTIMIZACIÓN CRÍTICA PARA IMPRESIÓN --- */
         @media print {
             @page {
-                margin: 1cm; /* Margen de hoja reducido */
+                margin: 1cm;
                 size: A4;
             }
             body { 
                 background-color: #fff; 
                 color: #000; 
-                font-size: 11pt; /* Letra un poco más chica para ahorrar espacio */
+                font-size: 11pt; 
                 line-height: 1.4;
+                padding-bottom: 0;
             }
             .container { 
                 box-shadow: none; margin: 0; padding: 0; width: 100%; max-width: 100%; 
@@ -160,14 +211,15 @@
             }
             .btn-download { display: none; }
             
-            /* Colores oscuros a negro para impresión */
             h1, h2, .job-title, strong, .sub-project-title { color: #000 !important; }
             .role, .company, .prompt { color: #000 !important; font-weight: 800; }
             .date { color: #333 !important; }
             p, li { color: #222 !important; }
 
-            /* Ahorro de espacio vertical */
-            header { margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #000; }
+            header { margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #000; display: flex !important; flex-direction: row !important; text-align: left !important; }
+            .header-left { max-width: 60%; }
+            .contact-info { text-align: right !important; border-top: none !important; padding-top: 0 !important; }
+
             h1 { font-size: 1.8rem; margin-bottom: 0; }
             h2 { 
                 font-size: 1.2rem; 
@@ -182,19 +234,13 @@
                 box-shadow: none; 
                 padding: 10px;
                 margin-bottom: 15px;
+                overflow: visible;
             }
-            .skill-category { 
-                background: none; 
-                border: 1px solid #ccc; 
-                padding: 8px;
-            }
+            .skill-category { background: none; border: 1px solid #ccc; padding: 8px; }
             .sub-project { border-left: 2px solid #000; margin-bottom: 8px; }
             
-            /* Evitar cortes feos de página */
             .job, .skills-grid, .terminal-box { page-break-inside: avoid; }
-            
-            /* Grilla más compacta */
-            .skills-grid { gap: 10px; margin-top: 10px; }
+            .skills-grid { grid-template-columns: 1fr 1fr !important; gap: 10px; margin-top: 10px; }
             
             a { text-decoration: none; color: #000; }
             li::marker { color: #000; }
@@ -207,14 +253,14 @@
 
     <div class="container">
         <header>
-            <div>
+            <div class="header-left">
                 <h1>MAXIMILIANO RIOS</h1>
                 <div class="role">FULL STACK DEVELOPER & LINUX ENTHUSIAST</div>
             </div>
             <div class="contact-info">
                 <div>📍 Argentina</div>
-                <div>📧 ariasmanuel191@gmail.com</div>
-                <div>💼 linkedin.com/in/omar-maximiliano-rios</div>
+                <div>📧 [Tu Email]</div>
+                <div>💼 linkedin.com/in/[tu-usuario]</div>
                 <div>💻 DragonTeam Lead</div>
             </div>
         </header>
@@ -246,13 +292,14 @@
             <div class="job">
                 <div class="job-header">
                     <div>
-                        <div class="job-title">Desarrollador Full Stack Freelance</div>
+                        <span class="job-title">Desarrollador Full Stack Freelance</span>
                         <div class="company">Proyectos Independientes & Consultoría</div>
                     </div>
                     <div class="date">2019 – Actualidad</div>
                 </div>
                 
-                <p><strong>Cliente: GDN Argentina (2025)</strong> - <em>Vendor Management System</em></p>
+                <p><strong>Cliente: GDN Argentina (2025)</strong><br>
+                <em>Vendor Management System</em></p>
                 <ul>
                     <li>Diseño de arquitectura full stack de alta disponibilidad.</li>
                     <li>Configuración de entorno en Linux con <strong>scripts de Bash</strong> para logs y monitoreo.</li>
@@ -261,7 +308,8 @@
 
                 <br>
 
-                <p><strong>Cliente: Impalacabos</strong> - <em>Desarrollo Integral Serverless</em></p>
+                <p><strong>Cliente: Impalacabos</strong><br>
+                <em>Desarrollo Integral Serverless</em></p>
                 
                 <div class="sub-project">
                     <span class="sub-project-title">1. Sistema de Booking (Reservas)</span>
@@ -295,7 +343,7 @@
             <div class="job">
                 <div class="job-header">
                     <div>
-                        <div class="job-title">DragonTeam</div>
+                        <span class="job-title">DragonTeam</span>
                         <div class="company">Fundador & Lead Developer</div>
                     </div>
                 </div>
@@ -330,6 +378,6 @@
     </div>
 
 </body>
-
 </html>
+
 
