@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Maximiliano Rios</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --text-color: #e2e8f0;
+            --accent-color: #00ff9d; 
+            --secondary-text: #94a3b8;
+            --card-bg: #1e293b;
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --font-mono: 'Fira Code', 'Courier New', monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 40px;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            border-top: 4px solid var(--accent-color);
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 1px dashed #334155;
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+        }
+
+        h1 { font-size: 2.2rem; color: #fff; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
+        .role { color: var(--accent-color); font-family: var(--font-mono); font-size: 1.1rem; font-weight: bold; }
+        
+        .contact-info { text-align: right; font-size: 0.9rem; color: var(--secondary-text); font-family: var(--font-mono); }
+        .contact-info div { margin-bottom: 2px; }
+
+        /* Sections */
+        h2 {
+            font-size: 1.3rem;
+            color: #fff;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 15px;
+            margin-bottom: 15px;
+            margin-top: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: var(--font-mono);
+        }
+
+        p { margin-bottom: 10px; color: #cbd5e1; font-weight: 300; }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Forzado a 2 columnas para mejor orden */
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .skill-category { background: rgba(255,255,255,0.03); padding: 12px; border-radius: 4px; }
+        .skill-category strong { color: var(--accent-color); display: block; margin-bottom: 5px; font-family: var(--font-mono); border-bottom: 1px solid #333; padding-bottom: 3px;}
+
+        /* Terminal Box */
+        .terminal-box {
+            background-color: #09090b;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: #d4d4d8;
+            margin-bottom: 20px;
+            border: 1px solid #27272a;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+        }
+        .prompt { color: var(--accent-color); font-weight: bold; }
+        .cmd { color: #fff; }
+        .output { color: #a1a1aa; margin-left: 15px; display: block; margin-top: 2px; }
+
+        /* Experience */
+        .job { margin-bottom: 25px; }
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            align-items: baseline;
+        }
+        .job-title { font-weight: 700; font-size: 1.1rem; color: #fff; }
+        .company { color: var(--accent-color); font-family: var(--font-mono); font-size: 0.9rem; }
+        .date { font-family: var(--font-mono); color: var(--secondary-text); font-size: 0.85rem; }
+
+        .sub-project {
+            margin-left: 10px;
+            margin-bottom: 10px;
+            padding-left: 15px;
+            border-left: 2px solid #334155;
+        }
+        .sub-project-title {
+            color: #fff;
+            font-weight: bold;
+            font-size: 0.95rem;
+            margin-bottom: 3px;
+            display: block;
+        }
+
+        ul { margin-left: 20px; color: #cbd5e1; }
+        li { margin-bottom: 4px; position: relative; padding-left: 5px; }
+        li::marker { color: var(--accent-color); }
+
+        /* Button */
+        .btn-download {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--accent-color);
+            color: #000;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(0, 255, 157, 0.2);
+            transition: all 0.3s;
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 1000;
+        }
+        .btn-download:hover { background-color: #fff; box-shadow: 0 0 30px rgba(255, 255, 255, 0.4); }
+
+        /* --- OPTIMIZACIÓN CRÍTICA PARA IMPRESIÓN --- */
+        @media print {
+            @page {
+                margin: 1cm; /* Margen de hoja reducido */
+                size: A4;
+            }
+            body { 
+                background-color: #fff; 
+                color: #000; 
+                font-size: 11pt; /* Letra un poco más chica para ahorrar espacio */
+                line-height: 1.4;
+            }
+            .container { 
+                box-shadow: none; margin: 0; padding: 0; width: 100%; max-width: 100%; 
+                background-color: #fff; border: none; 
+            }
+            .btn-download { display: none; }
+            
+            /* Colores oscuros a negro para impresión */
+            h1, h2, .job-title, strong, .sub-project-title { color: #000 !important; }
+            .role, .company, .prompt { color: #000 !important; font-weight: 800; }
+            .date { color: #333 !important; }
+            p, li { color: #222 !important; }
+
+            /* Ahorro de espacio vertical */
+            header { margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #000; }
+            h1 { font-size: 1.8rem; margin-bottom: 0; }
+            h2 { 
+                font-size: 1.2rem; 
+                margin-top: 15px; 
+                margin-bottom: 8px; 
+                border-left: 4px solid #000;
+            }
+            .terminal-box { 
+                background-color: #f4f4f5; 
+                color: #000; 
+                border: 1px solid #999; 
+                box-shadow: none; 
+                padding: 10px;
+                margin-bottom: 15px;
+            }
+            .skill-category { 
+                background: none; 
+                border: 1px solid #ccc; 
+                padding: 8px;
+            }
+            .sub-project { border-left: 2px solid #000; margin-bottom: 8px; }
+            
+            /* Evitar cortes feos de página */
+            .job, .skills-grid, .terminal-box { page-break-inside: avoid; }
+            
+            /* Grilla más compacta */
+            .skills-grid { gap: 10px; margin-top: 10px; }
+            
+            a { text-decoration: none; color: #000; }
+            li::marker { color: #000; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="btn-download" onclick="window.print()">⇩ Imprimir / PDF</button>
+
+    <div class="container">
+        <header>
+            <div>
+                <h1>MAXIMILIANO RIOS</h1>
+                <div class="role">FULL STACK DEVELOPER & LINUX ENTHUSIAST</div>
+            </div>
+            <div class="contact-info">
+                <div>📍 Argentina</div>
+                <div>📧 [Tu Email]</div>
+                <div>💼 linkedin.com/in/[tu-usuario]</div>
+                <div>💻 DragonTeam Lead</div>
+            </div>
+        </header>
+
+        <section>
+            <h2>// Perfil Técnico</h2>
+            <p>
+                Desarrollador Full Stack con más de 5 años de experiencia freelance, especializado en el ecosistema React y arquitecturas Serverless con Firebase. Mi diferencial es combinar el desarrollo moderno de aplicaciones con un sólido dominio de <strong>Linux</strong> para la gestión de entornos y virtualización, asegurando soluciones robustas y escalables.
+            </p>
+        </section>
+
+        <section>
+            <h2>// Entorno & Herramientas</h2>
+            
+            <div class="terminal-box">
+                <div><span class="prompt">maxi@dragonteam:~$</span> <span class="cmd">neofetch --stdout</span></div>
+                <div class="output">OS: Debian GNU/Linux / Arch Linux</div>
+                <div class="output">Cloud: Firebase (Serverless)</div>
+                <div class="output">Virt: VMware / VirtualBox</div>
+                <br>
+                <div><span class="prompt">maxi@dragonteam:~$</span> <span class="cmd">cat stack.json</span></div>
+                <div class="output">["ReactJS", "Firestore", "Cloud Functions", "Debian Boxes"]</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>// Experiencia Profesional</h2>
+
+            <div class="job">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Desarrollador Full Stack Freelance</div>
+                        <div class="company">Proyectos Independientes & Consultoría</div>
+                    </div>
+                    <div class="date">2019 – Actualidad</div>
+                </div>
+                
+                <p><strong>Cliente: GDN Argentina (2025)</strong> - <em>Vendor Management System</em></p>
+                <ul>
+                    <li>Diseño de arquitectura full stack de alta disponibilidad.</li>
+                    <li>Configuración de entorno en Linux con <strong>scripts de Bash</strong> para logs y monitoreo.</li>
+                    <li>Hardening de servidores (Firewall UFW, gestión de permisos).</li>
+                </ul>
+
+                <br>
+
+                <p><strong>Cliente: Impalacabos</strong> - <em>Desarrollo Integral Serverless</em></p>
+                
+                <div class="sub-project">
+                    <span class="sub-project-title">1. Sistema de Booking (Reservas)</span>
+                    <ul>
+                        <li>Lógica de reservas en tiempo real con <strong>Firestore</strong> (concurrencia).</li>
+                        <li><strong>Cloud Functions</strong> para notificaciones automáticas y emails.</li>
+                    </ul>
+                </div>
+
+                <div class="sub-project">
+                    <span class="sub-project-title">2. Admin Panel - Gestión Operativa</span>
+                    <ul>
+                        <li>Panel seguro con <strong>Firebase Auth</strong> y roles (Admin/Staff).</li>
+                        <li>Interfaces reactivas para gestión de inventario y usuarios.</li>
+                    </ul>
+                </div>
+
+                <div class="sub-project">
+                    <span class="sub-project-title">3. Admin Panel - Métricas & Control</span>
+                    <ul>
+                        <li>Dashboard de control con métricas de negocio en tiempo real.</li>
+                        <li>Implementación de Firestore Security Rules para datos sensibles.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <section>
+            <h2>// Proyectos Propios</h2>
+            <div class="job">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">DragonTeam</div>
+                        <div class="company">Fundador & Lead Developer</div>
+                    </div>
+                </div>
+                <ul>
+                    <li>Desarrollo integral de marca de software propia.</li>
+                    <li>Administración de <strong>VPS</strong> para hosting, gestión de DNS, SSL y Nginx.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>// Stack Detallado</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <strong>Frontend & UI</strong>
+                    ReactJS, HTML5, CSS3, Tailwind, Responsive Design.
+                </div>
+                <div class="skill-category">
+                    <strong>Backend & Firebase</strong>
+                    Firestore (NoSQL), Cloud Functions, Firebase Auth, Security Rules.
+                </div>
+                <div class="skill-category">
+                    <strong>Linux & SysAdmin</strong>
+                    Shell Scripting, SSH, Process Mgmt (htop, systemctl), Net Troubleshooting.
+                </div>
+                <div class="skill-category">
+                    <strong>Virtualización</strong>
+                    VMware, VirtualBox, Debian Boxes (Vagrant/VMs), Snapshots management.
+                </div>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
