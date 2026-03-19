@@ -188,7 +188,7 @@
         /* --- PRINT STYLES --- */
         @media print {
             @page { margin: 1cm; size: A4; }
-            body { background-color: #fff; color: #000; font-size: 11pt; line-height: 1.4; padding-bottom: 0; }
+            body { background-color: #fff; color: #000; font-size: 10.5pt; line-height: 1.4; padding-bottom: 0; }
             .container { box-shadow: none; margin: 0; padding: 0; width: 100%; max-width: 100%; background-color: #fff; border: none; }
             .controls { display: none; }
             
@@ -197,18 +197,19 @@
             .date { color: #333 !important; }
             p, li { color: #222 !important; }
 
-            header { margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #000; display: flex !important; flex-direction: row !important; text-align: left !important; }
+            header { margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid #000; display: flex !important; flex-direction: row !important; text-align: left !important; }
             .header-left { max-width: 60%; }
             .contact-info { text-align: right !important; border-top: none !important; padding-top: 0 !important; }
 
-            h1 { font-size: 1.8rem; margin-bottom: 0; }
-            h2 { font-size: 1.2rem; margin-top: 15px; margin-bottom: 8px; border-left: 4px solid #000; }
-            .terminal-box { background-color: #f4f4f5; color: #000; border: 1px solid #999; box-shadow: none; padding: 10px; margin-bottom: 15px; overflow: visible; }
-            .skill-category { background: none; border: 1px solid #ccc; padding: 8px; }
-            .sub-project { border-left: 2px solid #000; margin-bottom: 8px; }
+            h1 { font-size: 1.7rem; margin-bottom: 0; }
+            h2 { font-size: 1.15rem; margin-top: 12px; margin-bottom: 6px; border-left: 4px solid #000; }
+            .terminal-box { background-color: #f4f4f5; color: #000; border: 1px solid #999; box-shadow: none; padding: 8px; margin-bottom: 12px; overflow: visible; }
+            .skill-category { background: none; border: 1px solid #ccc; padding: 6px; }
+            .sub-project { border-left: 2px solid #000; margin-bottom: 6px; }
             
+            .job { margin-bottom: 15px; }
             .job, .skills-grid, .terminal-box { page-break-inside: avoid; }
-            .skills-grid { grid-template-columns: 1fr 1fr !important; gap: 10px; margin-top: 10px; }
+            .skills-grid { grid-template-columns: 1fr 1fr !important; gap: 8px; margin-top: 8px; }
             a { text-decoration: none; color: #000; }
             li::marker { color: #000; }
         }
@@ -239,7 +240,7 @@
             <section>
                 <h2>// Perfil Técnico</h2>
                 <p>
-                    Desarrollador Full Stack con más de 5 años de experiencia freelance, especializado en el ecosistema React y arquitecturas Serverless con Firebase. Mi diferencial es combinar el desarrollo moderno de aplicaciones con un sólido dominio de <strong>Linux</strong> para la gestión de entornos y virtualización, asegurando soluciones robustas y escalables.
+                    Desarrollador Full Stack con experiencia freelance, especializado en el ecosistema React y arquitecturas Serverless con Firebase. Mi diferencial es combinar el desarrollo moderno de aplicaciones con un sólido dominio de <strong>Linux</strong> para la gestión de entornos y virtualización, asegurando soluciones robustas, escalables y orientadas a resultados.
                 </p>
             </section>
 
@@ -262,48 +263,52 @@
                         <div class="date">2019 – Actualidad</div>
                     </div>
                     
+                    <p><strong>Cliente: Impalacabos (2025-2026)</strong><br><em>Desarrollo Integral Serverless</em></p>
+                    <div class="sub-project">
+                        <span class="sub-project-title">Sistema de Booking & Admin Panels</span>
+                        <ul>
+                            <li>Desarrollé la lógica de reservas en tiempo real con <strong>Firestore</strong> para gestión de concurrencia.</li>
+                            <li>Creé paneles administrativos seguros con <strong>Firebase Auth</strong> (roles Admin/Staff) e interfaces reactivas para gestión de inventario y visualización de métricas.</li>
+                            <li>Implementé automatizaciones con <strong>Cloud Functions</strong> y protegí los datos sensibles mediante Firestore Security Rules.</li>
+                        </ul>
+                    </div>
+                    <br>
                     <p><strong>Cliente: GDN Argentina (2025)</strong><br><em>Vendor Management System</em></p>
                     <ul>
                         <li>Diseño de arquitectura full stack de alta disponibilidad.</li>
-                        <li>Configuración de entorno en Linux con <strong>scripts de Bash</strong> para logs y monitoreo.</li>
-                        <li>Hardening de servidores (Firewall UFW, gestión de permisos).</li>
+                        <li>Configuración de entorno en Linux con <strong>scripts de Bash</strong> para logs y monitoreo, y Hardening de servidores (UFW).</li>
                     </ul>
-                    <br>
-                    <p><strong>Cliente: Impalacabos</strong><br><em>Desarrollo Integral Serverless</em></p>
-                    
-                    <div class="sub-project">
-                        <span class="sub-project-title">1. Sistema de Booking (Reservas)</span>
-                        <ul>
-                            <li>Lógica de reservas en tiempo real con <strong>Firestore</strong> (concurrencia).</li>
-                            <li><strong>Cloud Functions</strong> para notificaciones automáticas y emails.</li>
-                        </ul>
-                    </div>
-                    <div class="sub-project">
-                        <span class="sub-project-title">2. Admin Panel - Gestión Operativa</span>
-                        <ul>
-                            <li>Panel seguro con <strong>Firebase Auth</strong> y roles (Admin/Staff).</li>
-                            <li>Interfaces reactivas para gestión de inventario y usuarios.</li>
-                        </ul>
-                    </div>
-                    <div class="sub-project">
-                        <span class="sub-project-title">3. Admin Panel - Métricas & Control</span>
-                        <ul>
-                            <li>Dashboard de control con métricas de negocio en tiempo real.</li>
-                            <li>Implementación de Firestore Security Rules para datos sensibles.</li>
-                        </ul>
-                    </div>
                 </div>
             </section>
 
             <section>
-                <h2>// Proyectos Propios</h2>
+                <h2>// Proyectos Propios & Logros</h2>
+                
                 <div class="job">
                     <div class="job-header">
-                        <div><span class="job-title">DragonTeam</span><div class="company">Fundador & Lead Developer</div></div>
+                        <div><span class="job-title">MotoTrack (2026)</span><div class="company">Aplicación de Telemetría</div></div>
                     </div>
                     <ul>
-                        <li>Desarrollo integral de marca de software propia.</li>
-                        <li>Administración de <strong>VPS</strong> para hosting, gestión de DNS, SSL y Nginx.</li>
+                        <li>Desarrollo de aplicación enfocada en telemetría y análisis de rendimiento para vehículos motorizados (métricas en tiempo real).</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div><span class="job-title">DragonTeam (2025)</span><div class="company">Fundador & Plataforma Web</div></div>
+                    </div>
+                    <ul>
+                        <li>Desarrollo de la plataforma web corporativa, perfiles de equipo y panel de administración integral a medida.</li>
+                        <li>Administración de <strong>VPS</strong> para hosting de clientes, gestión de DNS, SSL y optimización de Nginx.</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div><span class="job-title">Hackathon Zerve AI (2025)</span><div class="company">Participante Competitivo</div></div>
+                    </div>
+                    <ul>
+                        <li>Participación activa en el desarrollo de soluciones innovadoras orientadas a Inteligencia Artificial bajo plazos ajustados.</li>
                     </ul>
                 </div>
             </section>
@@ -317,11 +322,11 @@
                     </div>
                     <div class="skill-category">
                         <strong>Backend & Firebase</strong>
-                        Firestore (NoSQL), Cloud Functions, Firebase Auth, Security Rules.
+                        Firestore, Cloud Functions, Firebase Auth.
                     </div>
                     <div class="skill-category">
                         <strong>Linux & SysAdmin</strong>
-                        Shell Scripting, SSH, Process Mgmt, Net Troubleshooting.
+                        Shell Scripting, SSH, Process Mgmt, htop, Net.
                     </div>
                     <div class="skill-category">
                         <strong>Virtualización</strong>
@@ -348,7 +353,7 @@
             <section>
                 <h2>// Professional Profile</h2>
                 <p>
-                    Full Stack Engineer with a strong specialization in <strong>Frontend Development</strong> and 5+ years of freelance experience. Expert in building high-performance, responsive User Interfaces using the <strong>React ecosystem</strong> and Serverless architectures. I bring a unique value proposition: combining modern UI engineering with deep <strong>Linux</strong> knowledge to optimize deployment environments and virtualization workflow.
+                    Full Stack Engineer with a strong specialization in <strong>Frontend Development</strong>. Expert in building high-performance, responsive User Interfaces using the <strong>React ecosystem</strong> and Serverless architectures. I combine modern UI engineering with deep <strong>Linux</strong> knowledge to optimize deployment environments and virtualization workflows.
                 </p>
             </section>
 
@@ -371,48 +376,52 @@
                         <div class="date">2019 – Present</div>
                     </div>
                     
+                    <p><strong>Client: Impalacabos (2025-2026)</strong><br><em>Serverless App Suite Development</em></p>
+                    <div class="sub-project">
+                        <span class="sub-project-title">Booking System & Admin Dashboards</span>
+                        <ul>
+                            <li>Developed a responsive Booking UI with real-time availability updates using <strong>Firestore</strong> snapshots.</li>
+                            <li>Built secure Dashboards with <strong>Firebase Auth</strong> (RBAC) featuring complex reactive forms for efficient inventory and metrics management.</li>
+                            <li>Integrated automated processes via <strong>Cloud Functions</strong> and enforced data integrity via strict Security Rules.</li>
+                        </ul>
+                    </div>
+                    <br>
                     <p><strong>Client: GDN Argentina (2025)</strong><br><em>Vendor Management System</em></p>
                     <ul>
                         <li>Architected a high-availability Frontend for vendor management.</li>
-                        <li>Optimized deployment workflows on Linux servers using <strong>Bash scripts</strong> for log rotation and monitoring.</li>
-                        <li>Implemented Server Hardening (UFW Firewalls, Permission Management) to ensure data security.</li>
+                        <li>Optimized deployment workflows on Linux servers using <strong>Bash scripts</strong> and implemented Server Hardening (UFW Firewalls).</li>
                     </ul>
-                    <br>
-                    <p><strong>Client: Impalacabos</strong><br><em>Serverless App Suite Development</em></p>
-                    
-                    <div class="sub-project">
-                        <span class="sub-project-title">1. Real-time Booking System (UI/UX)</span>
-                        <ul>
-                            <li>Developed a responsive Booking UI with real-time availability updates using <strong>Firestore</strong> snapshots.</li>
-                            <li>Integrated automated transactional emails via <strong>Cloud Functions</strong>.</li>
-                        </ul>
-                    </div>
-                    <div class="sub-project">
-                        <span class="sub-project-title">2. Operations Admin Panel</span>
-                        <ul>
-                            <li>Built a secure Dashboard with <strong>Firebase Auth</strong> and Role-Based Access Control (RBAC).</li>
-                            <li>Designed complex reactive forms for efficient inventory management.</li>
-                        </ul>
-                    </div>
-                    <div class="sub-project">
-                        <span class="sub-project-title">3. Analytics Dashboard</span>
-                        <ul>
-                            <li>Created a data visualization interface for real-time business metrics.</li>
-                            <li>Enforced data integrity via strict Firestore Security Rules.</li>
-                        </ul>
-                    </div>
                 </div>
             </section>
 
             <section>
-                <h2>// Own Projects</h2>
+                <h2>// Projects & Achievements</h2>
+                
                 <div class="job">
                     <div class="job-header">
-                        <div><span class="job-title">DragonTeam</span><div class="company">Founder & Lead Developer</div></div>
+                        <div><span class="job-title">MotoTrack (2026)</span><div class="company">Telemetry Application</div></div>
                     </div>
                     <ul>
-                        <li>End-to-end development of proprietary software solutions.</li>
+                        <li>Developed a frontend interface to track, visualize, and analyze real-time performance metrics and telemetry for motorized vehicles.</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div><span class="job-title">DragonTeam (2025)</span><div class="company">Founder & Web Platform</div></div>
+                    </div>
+                    <ul>
+                        <li>Developed the main corporate website, featuring team profiles and a custom administration dashboard.</li>
                         <li><strong>VPS Administration</strong> for client hosting, managing DNS, SSL certificates, and Nginx optimization.</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div><span class="job-title">Zerve AI Hackathon (2025)</span><div class="company">Competitive Participant</div></div>
+                    </div>
+                    <ul>
+                        <li>Competed in an AI-focused hackathon, building an innovative prototype under strict deadlines.</li>
                     </ul>
                 </div>
             </section>
@@ -421,20 +430,20 @@
                 <h2>// Detailed Tech Stack</h2>
                 <div class="skills-grid">
                     <div class="skill-category">
-                        <strong>Frontend & UI (Focus)</strong>
-                        ReactJS, HTML5, CSS3, Tailwind, Responsive Design, UX/UI Principles.
+                        <strong>Frontend & UI</strong>
+                        ReactJS, HTML5, CSS3, Tailwind, Responsive Design.
                     </div>
                     <div class="skill-category">
                         <strong>Backend & Serverless</strong>
-                        Firestore (NoSQL), Cloud Functions, Firebase Auth, Security Rules.
+                        Firestore, Cloud Functions, Firebase Auth.
                     </div>
                     <div class="skill-category">
                         <strong>Linux & SysAdmin</strong>
-                        Shell Scripting, SSH, Process Mgmt, Net Troubleshooting.
+                        Shell Scripting, SSH, Process Mgmt, Networking.
                     </div>
                     <div class="skill-category">
                         <strong>Virtualization</strong>
-                        VMware, VirtualBox, Debian Boxes, Vagrant workflows.
+                        VMware, VirtualBox, Debian Boxes, Vagrant.
                     </div>
                 </div>
             </section>
